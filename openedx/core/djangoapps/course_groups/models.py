@@ -25,7 +25,7 @@ class CourseUserGroup(models.Model):
                             help_text=("What is the name of this group?  "
                                        "Must be unique within a course."))
     users = models.ManyToManyField(User, db_index=True, related_name='course_groups',
-                                   help_text="Who is in this group?")
+                                   help_text="Who is in this group?", through='CourseUserGroupMembership')
 
     # Note: groups associated with particular runs of a course.  E.g. Fall 2012 and Spring
     # 2013 versions of 6.00x will have separate groups.
@@ -56,6 +56,14 @@ class CourseUserGroup(models.Model):
             group_type=group_type,
             name=name
         )
+
+class CourseUserGroupMembership(models.Model):
+    """Used internally to enforce our particular definition of uniqueness"""
+    class Meta(object):
+        unique_together = (('course_user_group.course_id', 'user', 'course_user_group.group_type'), )
+
+    course_user_group = models.ForeignKey(CourseUserGroup)
+    user = models.ForeignKey(User)
 
 
 class CourseUserGroupPartitionGroup(models.Model):
