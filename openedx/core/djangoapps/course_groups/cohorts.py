@@ -18,7 +18,7 @@ from eventtracking import tracker
 from request_cache.middleware import RequestCache
 from student.models import get_user_by_username_or_email
 
-from .models import CourseUserGroup, CourseCohort, CourseCohortsSettings, CourseUserGroupPartitionGroup
+from .models import CourseUserGroup, CourseCohort, CourseCohortsSettings, CourseUserGroupPartitionGroup, CourseUserGroupMembership
 
 
 log = logging.getLogger(__name__)
@@ -325,6 +325,7 @@ def is_cohort_exists(course_key, name):
     return CourseUserGroup.objects.filter(course_id=course_key, group_type=CourseUserGroup.COHORT, name=name).exists()
 
 
+@transaction.commit_on_success
 def add_user_to_cohort(cohort, username_or_email):
     """
     Look up the given user, and if successful, add them to the specified cohort.
@@ -362,6 +363,8 @@ def add_user_to_cohort(cohort, username_or_email):
             previous_cohort_name = previous_cohort.name
             previous_cohort_id = previous_cohort.id
 
+    membership = CourseUserGroupMembership(course_user_group=cohort, user=user)
+    membership.save()
     tracker.emit(
         "edx.cohort.user_add_requested",
         {
@@ -372,7 +375,6 @@ def add_user_to_cohort(cohort, username_or_email):
             "previous_cohort_name": previous_cohort_name,
         }
     )
-    cohort.users.add(user)
     return (user, previous_cohort_name)
 
 
