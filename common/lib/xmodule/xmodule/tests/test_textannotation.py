@@ -76,17 +76,15 @@ class TextAnnotationModuleTestCase(unittest.TestCase):
         that will be used in templates/textannotation.html
         """
         context = self.mod.student_view({}).content
-        for key in [
-            'display_name',
-            'tag',
-            'source',
-            'instructions_html',
-            'content_html',
-            'annotation_storage',
-            'token',
-            'diacritic_marks',
-            'default_tab',
-            'annotation_mode',
-            'is_course_staff'
-        ]:
+        for key in ['display_name',
+                    'tag',
+                    'source',
+                    'instructions_html',
+                    'content_html',
+                    'annotation_storage',
+                    'token',
+                    'diacritic_marks',
+                    'default_tab',
+                    'annotation_mode',
+                    'is_course_staff']:
             self.assertIn(key, context)

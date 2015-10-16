@@ -33,13 +33,13 @@ class TestPaverPrereqInstall(unittest.TestCase):
         os.environ.clear()
         os.environ.update(_orig_environ)
 
-    def test_no_prereq_install_true(self):
+    def test_no_prereq_install_true_lowercase(self):
         """
         Ensure that 'true' will be True.
         """
         self.check_val('true', True)
 
-    def test_no_prereq_install_false(self):
+    def test_no_prereq_install_false_lowercase(self):
         """
         Ensure that 'false' will be False.
         """

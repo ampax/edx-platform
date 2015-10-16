@@ -91,16 +91,15 @@ class ImageAnnotationModuleTestCase(unittest.TestCase):
         that will be used in templates/imageannotation.html
         """
         context = self.mod.student_view({}).content
-        for key in [
-            'display_name',
-            'instructions_html',
-            'annotation_storage',
-            'token',
-            'tag',
-            'openseadragonjson',
-            'default_tab',
-            'instructor_email',
-            'annotation_mode',
-            'is_course_staff'
-        ]:
+
+        for key in ['display_name',
+                    'instructions_html',
+                    'annotation_storage',
+                    'token',
+                    'tag',
+                    'openseadragonjson',
+                    'default_tab',
+                    'instructor_email',
+                    'annotation_mode',
+                    'is_course_staff']:
             self.assertIn(key, context)
