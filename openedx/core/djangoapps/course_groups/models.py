@@ -59,8 +59,20 @@ class CourseUserGroup(models.Model):
 
 class CourseUserGroupMembership(models.Model):
     """Used internally to enforce our particular definition of uniqueness"""
-    class Meta(object):
-        unique_together = (('course_user_group.course_id', 'user', 'course_user_group.group_type'), )
+
+    #overrides base Model implementation
+    def validate_unique(self):
+        if course_user_group.group_type != CourseUserGroup.COHORT:
+            super.validate_unique(self)
+        else:
+            try:
+                temp = CourseUserGroup.objects.get(
+                    course_id = course_user_group.course_id,
+                    users__id = user.id,
+                    group_type=CourseUserGroup.COHORT
+                )
+            except MultipleObjectsReturned:
+                raise ValidationError("User cannot belong to multiple cohorts in the same course!")
 
     course_user_group = models.ForeignKey(CourseUserGroup)
     user = models.ForeignKey(User)
