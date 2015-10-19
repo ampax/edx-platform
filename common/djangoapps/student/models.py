@@ -383,7 +383,6 @@ class UserProfile(models.Model):
 
 
 @receiver(models.signals.post_save, sender=UserProfile)
-@receiver(models.signals.post_delete, sender=UserProfile)
 def invalidate_user_profile_country_cache(sender, instance, **kwargs):  # pylint:   disable=unused-argument, invalid-name
     """Invalidate the cache of country in UserProfile model. """
 
