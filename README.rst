@@ -5,7 +5,7 @@ Installation
 ------------
 
 Please refer to the following wiki pages in our `configuration repo`_ to
-install edX:
+install edlynX:
 
 -  `edX Developer Stack`_: These instructions are for developers who want
    to contribute or make changes to the edX source code.
