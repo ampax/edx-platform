@@ -1944,14 +1944,19 @@ MKTG_URL_LINK_MAP = {
     'COURSES': 'courses',
     'ROOT': 'root',
     'TOS': 'tos',
-    'HONOR': 'honor',  # If your site does not have an honor code, simply delete this line.
+    '#HONOR': 'honor',  # If your site does not have an honor code, simply delete this line.
     'PRIVACY': 'privacy',
     'PRESS': 'press',
     'BLOG': 'blog',
     'DONATE': 'donate',
+    
+    'TEAM': 'team',
+    'PRICING-STRUCTURE': 'pricing-structure',
+    'DELIVERY-SHIPPING': 'delivery-shipping',
+    'REFUND-CANCELLATION': 'refund-cancellation',
 
     # Verified Certificates
-    'WHAT_IS_VERIFIED_CERT': 'verified-certificate',
+    # 'WHAT_IS_VERIFIED_CERT': 'verified-certificate',
 }
 
 ################# Social Media Footer Links #######################

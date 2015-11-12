@@ -1,10 +1,10 @@
+<%! from django.utils.translation import ugettext as _ %>
+
+<%! from django.core.urlresolvers import reverse %>
 <%inherit file="main.html" />
 <%namespace name='static' file='static_content.html'/>
-<%!
-from django.utils.translation import ugettext as _
-from django.core.urlresolvers import reverse
-from microsite_configuration import microsite
-%>
+
+<%! from microsite_configuration import microsite %>
 
 <%
   homepage_overlay_html = microsite.get_value('homepage_overlay_html')
@@ -16,6 +16,11 @@ from microsite_configuration import microsite
   show_partners = microsite.get_value('show_partners', True)
 
 %>
+<%block name="title">
+      <title>
+         IIT JEE Video Lectures | Created by Top World Scientists
+      </title>
+</%block>
 
 <section class="home">
   <header>
@@ -30,55 +35,37 @@ from microsite_configuration import microsite
               <h2>${_("For anyone, anywhere, anytime")}</h2>
             % else:
               ## Translators: 'Open edX' is a brand, please keep this untranslated. See http://openedx.org for more information.
-              <h1>${_("Welcome to Open edX!")}</h1>
+              <h1>${_("Your JEE Preparation using the Cutting Edge of America")}</h1>
               ## Translators: 'Open edX' is a brand, please keep this untranslated. See http://openedx.org for more information.
-              <h2>${_("It works! This is the default homepage for this Open edX instance.")}</h2>
+              <h2>${_("for anyone, anywhere, anytime")}</h2>
             % endif
           % endif
         </hgroup>
-        % if settings.FEATURES.get('ENABLE_COURSE_DISCOVERY'):
-          <div class="course-search">
-            <form method="get" action="/courses">
-              <input class="search-input" name="search_query" type="text" placeholder="${_("Search for a course")}"></input>
-              <button class="search-button" type="submit">
-                <i class="icon fa fa-search" aria-hidden="true"></i>
-              </button>
-            </form>
-          </div>
-        % endif
 
       </div>
 
-      % if show_homepage_promo_video:
+      ##% if show_homepage_promo_video:
         <a href="#video-modal" class="media" rel="leanModal">
           <div class="hero">
             <div class="play-intro"></div>
           </div>
         </a>
-      % endif
+      ##% endif
     </div>
-
   </header>
-  <section class="courses-container">
+  <section class="container">
     <section class="highlighted-courses">
 
       % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
         <section class="courses">
             <ul class="courses-listing">
-            ## limiting the course number by using HOMEPAGE_COURSE_MAX as the maximum number of courses
-            %for course in courses[:settings.HOMEPAGE_COURSE_MAX]:
+            %for course in courses:
               <li class="courses-listing-item">
                 <%include file="course.html" args="course=course" />
               </li>
             %endfor
             </ul>
         </section>
-        ## in case there are courses that are not shown on the homepage, a 'View all Courses' link should appear
-        % if settings.HOMEPAGE_COURSE_MAX and len(courses) > settings.HOMEPAGE_COURSE_MAX:
-          <div class="courses-more">
-            <a class="courses-more-cta" href="${marketing_link('COURSES')}" > ${_("View all Courses")} </a>
-          </div>
-        % endif
       % endif
 
     </section>
@@ -88,11 +75,11 @@ from microsite_configuration import microsite
 <section id="video-modal" class="modal home-page-video-modal video-modal">
   <div class="inner-wrapper">
     <%
-      youtube_video_id = homepage_promo_video_youtube_id
+      youtube_video_id = "UczJvTKgIBk"
       if self.stanford_theme_enabled():
         youtube_video_id = "2gmreZObCY4"
     %>
-    <iframe title="YouTube Video" width="640" height="360" src="//www.youtube.com/embed/${youtube_video_id}?showinfo=0" frameborder="0" allowfullscreen></iframe>
+    <iframe width="640" height="360" src="//www.youtube.com/embed/${youtube_video_id}?showinfo=0" frameborder="0" allowfullscreen></iframe>
   </div>
 </section>
 
