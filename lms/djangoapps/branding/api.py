@@ -182,7 +182,7 @@ def _footer_navigation_links():
             ("donate", marketing_link("DONATE"), _("Donate")),
             ("sitemap", marketing_link("SITE_MAP"), _("Sitemap")),
             ("team", marketing_link("TEAM"), _("Team")),
-            ("REFUND-CANCELLATION", marketing_link("TEAM"), _("Refund and Cancellation Policy")),
+            ("refund-cancellation", marketing_link("REFUND-CANCELLATION"), _("Refund and Cancellation Policy")),
             ("delivery-shipping", marketing_link("DELIVERY-SHIPPING"), _("Delivery and Shipping Policy")),
             ("pricing-structure", marketing_link("PRICING-STRUCTURE"), _("Product/Service Details And Pricing Structure")),
         ]
