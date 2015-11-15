@@ -118,9 +118,7 @@ def _footer_copyright():
     # Translators: 'EdX', 'edX', and 'Open edX' are trademarks of 'edX Inc.'.
     # Please do not translate any of these trademarks and company names.
     return _(
-        u"\u00A9 {org_name}.  All rights reserved except where noted.  "
-        u"EdX, Open edX and the edX and Open EdX logos are registered trademarks "
-        u"or trademarks of edX Inc."
+        u"\u00A9 {org_name},  All rights reserved"
     ).format(org_name=org_name)
 
 
@@ -183,6 +181,10 @@ def _footer_navigation_links():
             ("jobs", marketing_link("JOBS"), _("Jobs")),
             ("donate", marketing_link("DONATE"), _("Donate")),
             ("sitemap", marketing_link("SITE_MAP"), _("Sitemap")),
+            ("team", marketing_link("TEAM"), _("Team")),
+            ("REFUND-CANCELLATION", marketing_link("TEAM"), _("Refund and Cancellation Policy")),
+            ("delivery-shipping", marketing_link("DELIVERY-SHIPPING"), _("Delivery and Shipping Policy")),
+            ("pricing-structure", marketing_link("PRICING-STRUCTURE"), _("Product/Service Details And Pricing Structure")),
         ]
         if link_url and link_url != "#"
     ]
