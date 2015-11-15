@@ -205,7 +205,6 @@ def _footer_legal_links():
     if not (tos_and_honor_link and tos_and_honor_link != "#"):
         links.extend([
             ("terms_of_service", marketing_link("TOS"), _("Terms of Service")),
-            ("honor_code", marketing_link("HONOR"), _("Honor Code")),
         ])
 
     return [
