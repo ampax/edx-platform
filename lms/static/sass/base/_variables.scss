@@ -370,7 +370,7 @@ $content-wrapper-bg: $white;
 $course-bg-color: #f2f2f2;
 $course-bg-image: url(../images/bg-texture.png);
 $account-content-wrapper-bg: shade($body-bg, 2%);
-$course-profile-bg: rgb(245,245,245);
+$course-profile-bg: rgb(10,74,103);
 $course-header-bg: rgba(255,255,255, 0.93);
 
 // MISC: course background texture
@@ -414,8 +414,8 @@ $footer_margin: ($baseline/4) 0 ($baseline*1.5) 0;
 // ====================
 
 // VIEWS: homepage
-$homepage__header--gradient__color--alpha: lighten($gray, 15%);
-$homepage__header--gradient__color--bravo: saturate($gray, 30%);
+$homepage__header--gradient__color--alpha: rgb(10,74,103);
+$homepage__header--gradient__color--bravo: rgb(10,74,103);
 $homepage__header--background: lighten($gray, 15%);
 
 // VIEWS: homepage and courses
