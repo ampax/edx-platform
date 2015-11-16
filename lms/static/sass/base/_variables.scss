@@ -370,7 +370,8 @@ $content-wrapper-bg: $white;
 $course-bg-color: #f2f2f2;
 $course-bg-image: url(../images/bg-texture.png);
 $account-content-wrapper-bg: shade($body-bg, 2%);
-$course-profile-bg: rgb(10,74,103);
+$course-profile-bg: rgb(245,245,245);
+$header-course-profile-bg: rgb(10,74,103);
 $course-header-bg: rgba(255,255,255, 0.93);
 
 // MISC: course background texture
