@@ -174,13 +174,8 @@ def _footer_navigation_links():
         }
         for link_name, link_url, link_title in [
             ("about", marketing_link("ABOUT"), _("About")),
-            ("blog", marketing_link("BLOG"), _("Blog")),
-            ("news", marketing_link("NEWS"), _("News")),
             ("faq", marketing_link("FAQ"), _("FAQs")),
             ("contact", marketing_link("CONTACT"), _("Contact")),
-            ("jobs", marketing_link("JOBS"), _("Jobs")),
-            ("donate", marketing_link("DONATE"), _("Donate")),
-            ("sitemap", marketing_link("SITE_MAP"), _("Sitemap")),
             ("team", marketing_link("TEAM"), _("Team")),
             ("refund-cancellation", marketing_link("REFUND-CANCELLATION"), _("Refund and Cancellation Policy")),
             ("delivery-shipping", marketing_link("DELIVERY-SHIPPING"), _("Delivery and Shipping Policy")),
@@ -194,9 +189,7 @@ def _footer_legal_links():
     """Return the legal footer links (e.g. terms of service). """
 
     links = [
-        ("terms_of_service_and_honor_code", marketing_link("TOS_AND_HONOR"), _("Terms of Service & Honor Code")),
         ("privacy_policy", marketing_link("PRIVACY"), _("Privacy Policy")),
-        ("accessibility_policy", marketing_link("ACCESSIBILITY"), _("Accessibility Policy")),
     ]
 
     # Backwards compatibility: If a combined "terms of service and honor code"
