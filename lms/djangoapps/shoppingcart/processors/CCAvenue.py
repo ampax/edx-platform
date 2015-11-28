@@ -34,7 +34,7 @@ from shoppingcart.models import Order
 from shoppingcart.processors.exceptions import *
 from shoppingcart.processors.helpers import get_processor_config
 from microsite_configuration import microsite
-
+from ccavutil import encrypt,decrypt
 
 def process_postpay_callback(params, **kwargs):
     """
@@ -81,15 +81,9 @@ def sign(params, signed_fields_key='orderPage_signedFields', full_sig_key='order
     params needs to be an ordered dict, b/c cybersource documentation states that order is important.
     Reverse engineered from PHP version provided by cybersource
     """
-    merchant_id = get_processor_config().get('MERCHANT_ID', '')
-
-    params['merchant_id'] = merchant_id
-
-    fields = u",".join(params.keys())
-    values = u",".join([u"{0}={1}".format(i, params[i]) for i in params.keys()])
-    fields_sig = processor_hash(fields)
-    values += u",signedFieldsPublicSignature=" + fields_sig
-    params['encRequest'] = processor_hash(values)
+    
+    values = u"&".join([u"{0}={1}".format(i, params[i]) for i in params.keys()])
+    params['encRequest'] = encrypt(values,'E81F2FFFAE8746B5D2995840D2913BA3')
     params['access_code'] = 'AVBB04CD90AM60BBMA'
 
     return params
@@ -130,11 +124,18 @@ def get_purchase_params(cart):
     total_cost = cart.total_cost
     amount = "{0:0.2f}".format(total_cost)
     cart_items = cart.orderitem_set.all()
+    
+    merchant_id = get_processor_config().get('MERCHANT_ID', '')
+    
     params = OrderedDict()
-    params['amount'] = amount
-    params['currency'] = cart.currency
-    params['language'] = 'en'
+    
+    params['merchant_id'] = merchant_id
     params['order_id'] = "{0:d}".format(cart.id)
+    params['currency'] = 'INR'
+    params['amount'] = amount
+    params['redirect_url'] = 'https://edlynx.org/dashboard'
+    params['cancel_url'] = 'https://edlynx.org/dashboard'
+    params['language'] = 'en'
 
     return params
 
