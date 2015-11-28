@@ -89,8 +89,8 @@ def sign(params, signed_fields_key='orderPage_signedFields', full_sig_key='order
     values = u",".join([u"{0}={1}".format(i, params[i]) for i in params.keys()])
     fields_sig = processor_hash(fields)
     values += u",signedFieldsPublicSignature=" + fields_sig
-    params[encRequest] = processor_hash(values)
-    params[access_code] = 'AVBB04CD90AM60BBMA'
+    params['encRequest'] = processor_hash(values)
+    params['access_code'] = 'AVBB04CD90AM60BBMA'
 
     return params
 
