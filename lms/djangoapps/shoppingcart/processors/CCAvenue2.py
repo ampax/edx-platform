@@ -300,7 +300,7 @@ def get_purchase_params(cart, callback_url=None, extra_data=None):
     params = OrderedDict()
 
     params['merchant_id'] = merchant_id
-    params['order_id'] = "OrderId: {0:d}".format(cart.id)
+    params['order_id'] = "{0:d}".format(cart.id)
     params['currency'] = 'INR'
     params['amount'] = amount
     params['redirect_url'] = callback_url
@@ -412,14 +412,14 @@ def _record_purchase(params, order):
 
     # Mark the order as purchased and store the billing information
     order.purchase(
-        first=params.get('billing_ name', ''),
-        last=params.get('billing_ name', ''),
-        street1=params.get('billing_ address', ''),
-        street2=params.get('billing_ address', ''),
-        city=params.get('billing_ city', ''),
-        state=params.get('billing_ state', ''),
-        country=params.get('billing_ country', ''),
-        postalcode=params.get('billing_ zip', ''),
+        first=params.get('billing_name', ''),
+        last=params.get('billing_name', ''),
+        street1=params.get('billing_address', ''),
+        street2=params.get('billing_address', ''),
+        city=params.get('billing_city', ''),
+        state=params.get('billing_state', ''),
+        country=params.get('billing_country', ''),
+        postalcode=params.get('billing_zip', ''),
         ccnum=ccnum,
         cardtype=params.get('payment_mode', ''),
         processor_reply_dump=json.dumps(params)
