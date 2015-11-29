@@ -38,7 +38,7 @@ from shoppingcart.models import Order
 from shoppingcart.processors.exceptions import *
 from shoppingcart.processors.helpers import get_processor_config
 from microsite_configuration import microsite
-from ccavutil import encrypt,decrypt
+from ccavutil import encrypt, decrypt
 
 log = logging.getLogger(__name__)
 
@@ -70,13 +70,19 @@ def process_postpay_callback(params):
     """
     try:
         log.info("Dude indside post callback %s", params)
+        log.info("Dude decrypted string is  %s", decrypt(params.get('encResp'), 'E81F2FFFAE8746B5D2995840D2913BA3'))
+
+        params = process_encrypted_data(params)
+        log.info("Dude indside post callback output params %s", params)
         valid_params = verify_signatures(params)
+        log.info("Dude indside post callback valid_params %s", valid_params)
         result = _payment_accepted(
-            valid_params['req_reference_number'],
-            valid_params['auth_amount'],
-            valid_params['req_currency'],
-            valid_params['decision']
+            valid_params['order_id'],
+            valid_params['amount'],
+            valid_params['currency'],
+            valid_params['order_status']
         )
+        log.info("Dude indside post callback result %s", result)
         if result['accepted']:
             _record_purchase(params, result['order'])
             return {
@@ -103,6 +109,16 @@ def process_postpay_callback(params):
             'order': None,  # due to exception we may not have the order
             'error_html': _get_processor_exception_html(error)
         }
+
+
+def process_encrypted_data(params):
+    enc_resp = decrypt(params.get('encResp'), 'E81F2FFFAE8746B5D2995840D2913BA3')
+    output_param = OrderedDict()
+    for x in enc_resp.split('&'):
+        parameter = x.split('=')
+        output_param[parameter[0]] = parameter[1]
+
+    return output_param
 
 
 def processor_hash(value):
@@ -145,21 +161,14 @@ def verify_signatures(params):
 
     # First see if the user cancelled the transaction
     # if so, then not all parameters will be passed back so we can't yet verify signatures
-    if params.get('decision') == u'CANCEL':
+    if params.get('order_status') == u'Aborted':
         raise CCProcessorUserCancelled()
 
-    #  if the user decline the transaction
-    # if so, then auth_amount will not be passed back so we can't yet verify signatures
-    if params.get('decision') == u'DECLINE':
-        raise CCProcessorUserDeclined()
+    if params.get('order_status') == u'Invalid':
+        raise CCProcessorUserCancelled()
 
-    # Validate the signature to ensure that the message is from CyberSource
-    # and has not been tampered with.
-    signed_fields = params.get('signed_field_names', '').split(',')
-    data = u",".join([u"{0}={1}".format(k, params.get(k, '')) for k in signed_fields])
-    returned_sig = params.get('signature', '')
-    if processor_hash(data) != returned_sig:
-        raise CCProcessorSignatureException()
+    if params.get('order_status') == u'Failure':
+        raise CCProcessorUserCancelled()
 
     # Validate that we have the paramters we expect and can convert them
     # to the appropriate types.
@@ -168,10 +177,10 @@ def verify_signatures(params):
     # which fields they included in the signature, we need to be careful.
     valid_params = {}
     required_params = [
-        ('req_reference_number', int),
-        ('req_currency', str),
-        ('decision', str),
-        ('auth_amount', Decimal),
+        ('order_id', int),
+        ('currency', str),
+        ('order_status', str),
+        ('amount', Decimal),
     ]
     for key, key_type in required_params:
         if key not in params:
@@ -207,10 +216,10 @@ def sign(params):
 
     """
     values = u"&".join([u"{0}={1}".format(i, params.get(i, '')) for i in params.keys()])
-    params['encRequest'] = encrypt(values,'E81F2FFFAE8746B5D2995840D2913BA3')
+    params['encRequest'] = encrypt(values, 'E81F2FFFAE8746B5D2995840D2913BA3')
     params['access_code'] = 'AVBB04CD90AM60BBMA'
 
-    log.info("Dude inside sign params value is %s ",params)
+    log.info("Dude inside sign params value is %s ", params)
     return params
 
 
@@ -341,7 +350,7 @@ def _payment_accepted(order_id, auth_amount, currency, decision):
     except Order.DoesNotExist:
         raise CCProcessorDataException(_("The payment processor accepted an order whose number is not in our system."))
 
-    if decision == 'ACCEPT':
+    if decision == 'Success':
         if auth_amount == order.total_cost and currency == order.currency:
             return {
                 'accepted': True,
@@ -362,7 +371,7 @@ def _payment_accepted(order_id, auth_amount, currency, decision):
                 )
             )
 
-            #pylint: disable=attribute-defined-outside-init
+            # pylint: disable=attribute-defined-outside-init
             ex.order = order
             raise ex
     else:
@@ -389,7 +398,7 @@ def _record_purchase(params, order):
     # Usually, the credit card number will have the form "xxxxxxxx1234"
     # Parse the string to retrieve the digits.
     # If we can't find any digits, use placeholder values instead.
-    ccnum_str = params.get('req_card_number', '')
+    ccnum_str = params.get('bank_ref_no', '')
     mm = re.search("\d", ccnum_str)
     if mm:
         ccnum = ccnum_str[mm.start():]
@@ -403,16 +412,16 @@ def _record_purchase(params, order):
 
     # Mark the order as purchased and store the billing information
     order.purchase(
-        first=params.get('req_bill_to_forename', ''),
-        last=params.get('req_bill_to_surname', ''),
-        street1=params.get('req_bill_to_address_line1', ''),
-        street2=params.get('req_bill_to_address_line2', ''),
-        city=params.get('req_bill_to_address_city', ''),
-        state=params.get('req_bill_to_address_state', ''),
-        country=params.get('req_bill_to_address_country', ''),
-        postalcode=params.get('req_bill_to_address_postal_code', ''),
+        first=params.get('billing_ name', ''),
+        last=params.get('billing_ name', ''),
+        street1=params.get('billing_ address', ''),
+        street2=params.get('billing_ address', ''),
+        city=params.get('billing_ city', ''),
+        state=params.get('billing_ state', ''),
+        country=params.get('billing_ country', ''),
+        postalcode=params.get('billing_ zip', ''),
         ccnum=ccnum,
-        cardtype=CARDTYPE_MAP[params.get('req_card_type', '')],
+        cardtype=params.get('payment_mode', ''),
         processor_reply_dump=json.dumps(params)
     )
 
