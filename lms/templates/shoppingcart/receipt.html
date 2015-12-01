@@ -184,22 +184,10 @@ from microsite_configuration import microsite
           <div class="row">
             <div class="row-inside">
               <p>
-                <b class="billing-detail-label">${_('Card Type')}:</b>
+                <b class="billing-detail-label">${_('Payment Mode')}:</b>
                 <span class="billing-detail-value">
                   % if order.bill_to_cardtype:
                     ${order.bill_to_cardtype}
-                  % else:
-                    ${_('N/A')}
-                  % endif
-                </span>
-              </p>
-            </div>
-            <div class="row-inside">
-              <p>
-                <b class="billing-detail-label">${_('Credit Card Number')}:</b>
-                <span class="billing-detail-value">
-                  % if order.bill_to_ccnum:
-                    ${order.bill_to_ccnum}
                   % else:
                     ${_('N/A')}
                   % endif
@@ -220,22 +208,10 @@ from microsite_configuration import microsite
             </div>
             <div class="row-inside">
               <p>
-                <b class="billing-detail-label">${_('Address 1')}:</b>
+                <b class="billing-detail-label">${_('Address')}:</b>
                 <span class="billing-detail-value">
                   % if order.bill_to_street1:
                     ${order.bill_to_street1}
-                  % else:
-                    ${_('N/A')}
-                  % endif
-                </span>
-              </p>
-            </div>
-            <div class="row-inside">
-              <p>
-                <b class="billing-detail-label">${_('Address 2')}:</b>
-                <span class="billing-detail-value">
-                  % if order.bill_to_street2:
-                    ${order.bill_to_street2}
                   % else:
                     ${_('N/A')}
                   % endif

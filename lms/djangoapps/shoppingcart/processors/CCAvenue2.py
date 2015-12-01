@@ -216,11 +216,14 @@ def sign(params):
 
     """
     values = u"&".join([u"{0}={1}".format(i, params.get(i, '')) for i in params.keys()])
-    params['encRequest'] = encrypt(values, 'E81F2FFFAE8746B5D2995840D2913BA3')
-    params['access_code'] = 'AVBB04CD90AM60BBMA'
+
+    new_encrypted_params = OrderedDict()
+
+    new_encrypted_params['encRequest'] = encrypt(values, 'E81F2FFFAE8746B5D2995840D2913BA3')
+    new_encrypted_params['access_code'] = 'AVBB04CD90AM60BBMA'
 
     log.info("Dude inside sign params value is %s ", params)
-    return params
+    return new_encrypted_params
 
 
 def render_purchase_form_html(cart, callback_url=None, extra_data=None):
@@ -413,9 +416,7 @@ def _record_purchase(params, order):
     # Mark the order as purchased and store the billing information
     order.purchase(
         first=params.get('billing_name', ''),
-        last=params.get('billing_name', ''),
         street1=params.get('billing_address', ''),
-        street2=params.get('billing_address', ''),
         city=params.get('billing_city', ''),
         state=params.get('billing_state', ''),
         country=params.get('billing_country', ''),
