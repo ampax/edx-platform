@@ -1948,7 +1948,7 @@ MKTG_URL_LINK_MAP = {
     'PRIVACY': 'privacy',
     'PRESS': 'press',
     'BLOG': 'blog',
-	'NEWS': 'news'
+    'NEWS': 'news',
 #    'DONATE': 'donate',
     'PRICING-STRUCTURE': 'pricing-structure',
     'DELIVERY-SHIPPING': 'delivery-shipping',
