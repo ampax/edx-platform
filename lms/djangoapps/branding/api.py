@@ -174,6 +174,8 @@ def _footer_navigation_links():
         }
         for link_name, link_url, link_title in [
             ("about", marketing_link("ABOUT"), _("About")),
+            ("blog", marketing_link("BLOG"), _("Blog")),		
+            ("news", marketing_link("NEWS"), _("News")),            
             ("faq", marketing_link("FAQ"), _("FAQs")),
             ("contact", marketing_link("CONTACT"), _("Contact")),
             ("team", marketing_link("TEAM"), _("Team")),
