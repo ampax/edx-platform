@@ -343,6 +343,10 @@ header.global {
   a {
     text-decoration: none;
     color: $link-color !important;
+    font-weight: 700 !important;
+    font-size: 1.5em !important;
+    margin-right: 0 !important;
+
   }
 }
 
@@ -872,5 +876,8 @@ header.global-new {
   a {
     text-decoration: none;
     color: $link-color !important;
+    font-weight: 700 !important;
+    font-size: 1.5em !important;
+    margin-right: 0 !important;
   }
 }
