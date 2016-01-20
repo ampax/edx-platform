@@ -33,7 +33,7 @@ $course-search-input-height: ($button-size);
       margin: 0 auto ($baseline);
       padding: ($baseline*5) ($baseline/2);
       max-width: ($baseline*60);
-      opacity: 0.5;
+      opacity: 0.7;
     }
 
     .title {
@@ -89,7 +89,7 @@ $course-search-input-height: ($button-size);
           margin-bottom: 0;
           text-shadow: 0 1px rgba(255,255,255, 0.6);
           text-transform: none;
-          color: green;
+          color: black;
           font-weight: 700;
         }
 
@@ -97,7 +97,7 @@ $course-search-input-height: ($button-size);
           margin-bottom: 0;
           text-transform: lowercase;
           font-style: italic;
-          color: green;
+          color: black;
           font-weight: 600;
         }
       }
