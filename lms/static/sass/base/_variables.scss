@@ -414,8 +414,8 @@ $footer_margin: ($baseline/4) 0 ($baseline*1.5) 0;
 // ====================
 
 // VIEWS: homepage
-$homepage__header--gradient__color--alpha: rgb(10,74,103);
-$homepage__header--gradient__color--bravo: rgb(10,74,103);
+$homepage__header--gradient__color--alpha: white;
+$homepage__header--gradient__color--bravo: white;
 $homepage__header--background: lighten($gray, 15%);
 
 // VIEWS: homepage and courses
