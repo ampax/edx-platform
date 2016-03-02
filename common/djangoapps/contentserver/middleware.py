@@ -66,9 +66,9 @@ class StaticContentServer(object):
                 if_modified_since = request.META['HTTP_IF_MODIFIED_SINCE']
                 if if_modified_since == last_modified_at_str:
                     response = HttpResponseNotModified()
-		            response['Last-Modified'] = content.last_modified_at.strftime(HTTP_DATE_FORMAT)
-	                remove_headers_from_response(response, "Vary")
-	                return response
+		    response['Last-Modified'] = content.last_modified_at.strftime(HTTP_DATE_FORMAT)
+	            remove_headers_from_response(response, "Vary")
+	            return response
 
             # *** File streaming within a byte range ***
             # If a Range is provided, parse Range attribute of the request
