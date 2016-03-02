@@ -1123,6 +1123,7 @@ TEMPLATE_LOADERS = (
 
 MIDDLEWARE_CLASSES = (
     'request_cache.middleware.RequestCache',
+    'clean_headers.middleware.CleanHeadersMiddleware',    
     'microsite_configuration.middleware.MicrositeMiddleware',
     'django_comment_client.middleware.AjaxExceptionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -1782,7 +1783,11 @@ INSTALLED_APPS = (
     'pipeline',
     'staticfiles',
     'static_replace',
-
+    
+    # For content serving
+    'contentserver',
+    
+    
     # Our courseware
     'circuit',
     'courseware',
