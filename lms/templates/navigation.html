@@ -123,15 +123,21 @@ site_status_msg = get_site_status_msg(course_id)
           </li>
         % endif
       </%block>
+	  <li class="nav-global-02">
+		<a href="/">${_("Home")}</a>
+      </li>
       <li class="nav-global-01">
-        <a href="${marketing_link('TEAM')}">${_("Team")}</a>
+		<a href="${marketing_link('TEAM')}">${_("Team")}</a>
       </li>
       <li class="nav-global-02">
-        <a href="${marketing_link('NEWS')}">${_("News")}</a>
+		<a href="${marketing_link('NEWS')}">${_("News")}</a>
       </li>
       <li class="nav-global-02">
 	    <a href="${marketing_link('BLOG')}">${_("Blog")}</a>
       </li>
+      <li class="nav-global-02">
+		<a href="${marketing_link('CONTACT')}">${_("Contact")}</a>
+	  </li>
     </ol>
 
     <ol class="right nav-courseware">
