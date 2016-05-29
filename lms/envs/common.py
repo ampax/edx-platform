@@ -1980,7 +1980,12 @@ MKTG_URL_LINK_MAP = {
     'PRIVACY': 'privacy',
     'PRESS': 'press',
     'BLOG': 'blog',
-    'DONATE': 'donate',
+    'NEWS': 'news',
+#    'DONATE': 'donate',
+    'PRICING-STRUCTURE': 'pricing-structure',
+    'DELIVERY-SHIPPING': 'delivery-shipping',
+    'REFUND-CANCELLATION': 'refund-cancellation',
+    'TEAM': 'team',
 
     # Verified Certificates
     'WHAT_IS_VERIFIED_CERT': 'verified-certificate',

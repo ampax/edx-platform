@@ -5,6 +5,131 @@
 <%block name="pagetitle">${_("In the Press")}</%block>
 
 <section class="container about">
-<h1>${_("In the Press")}</h1>
-<p>${_("This page left intentionally blank. It is not used by edx.org but is left here for possible use by installations of Open edX.")}</p>
+<script language="javascript" type="text/javascript">
+   function showText(seqNumber) {
+   	var showMore = "showMore" + seqNumber,
+   		moreText ="moreText" + seqNumber,
+   		showLess = "showLess" + seqNumber;
+
+    document.getElementById(showMore).style.display = "none";
+    document.getElementById(moreText).style.display = "inline";
+    document.getElementById(showLess).style.display = "inline";
+}
+   function hideText(seqNumber) {
+   	var showMore = "showMore" + seqNumber,
+   		moreText ="moreText" + seqNumber,
+   		showLess = "showLess" + seqNumber;
+
+    document.getElementById(showMore).style.display = "inline";
+    document.getElementById(moreText).style.display = "none";
+    document.getElementById(showLess).style.display = "none";
+}
+</script>
+
+<style>
+	.heading
+	{
+		line-height: 1.45em;
+		border-bottom: 1px solid #ccc;
+		font-size: 2.4375em;
+		letter-spacing: -1px;
+		font-family: alright_sansblack,HelveticaNeue,Helvetica,Arial,sans-serif;
+		color:#2968aa;
+		font-weight: 600;
+	}
+	.content
+	{
+		font-family:Open Sans,Arial,Helvetica,sans-serif;
+		line-height: 1.525;
+	}
+	.italic_content
+	{
+		 font-style: italic;
+		 font-size: 1.1em;
+		 color:#8c1515;
+	}
+</style>
+
+<div class="heading">Online Exam Preparation from the World's Top Scientists, Wall Streeters, and Lawyers</div>
+<br>
+<div class="content">
+<b>Edlynx (<a href="https://www.edlynx.org">www.edlynx.org</a>) </b>provides complete guidance on preparation for high stakes exams such as IIT JEE, CLAT, CSAT, and SSC. Learn from the experts and scientists associated with Harvard University, University of Pennsylvania, University of Berkeley, University of Chicago, IIT, IIM, Penn State University and more. <br>
+<br>
+Edlynx courses are fully sufficient and self contained and do not leave out any aspect. Once you select an edLynX course you get access to everything that you will need for your exam preparation from start to finish. Each course includes video tutorials by ivy league professors and industry leaders, home works, practice problems, tailored feedback, textbook, and forums for discussion on complex topics and problems. Our intelligent platform makes course revision a breeze by tracking your progress and helping you build your weak areas throughout the year rather than leaving everything to the end. <br>
+<br>
+Our study material is developed from the latest research in every area that is often only accessible to the experts in that field.<br>
+<br>According to the latest brain research students learn best when they discuss complex ideas. Online forums provide a venue for students to ask any question anytime. They also act as discussion hangouts that are monitored by faculty to guide discussions in right direction.
+<a id="showMore1" href="javascript:showText(1)">show more</a>
+<br>
+<br>
+<span id="moreText1" style="display:none">
+Edlynx is an intelligent learning platform based on OPENEDX built by leading American Universities MIT, Harvard, and Stanford. Intelligence of this platform tracks your learning and test performance and provides you tailored feedback focussing solely on your learning needs. <br>
+<br>
+On edlynx you can Access your courses anytime, anywhere, and as many times as you need. Play, pause, rewind, and replay a topic until you become an expert.<br>
+<br>
+Turbocharge your exam preparation with learning techniques used by leading scientists, best legal minds, olympians, and wall street financiers.<br>
+<br>
+Edlynx brings to you the latest discoveries in areas of neuroscience and cognitive science. We use teaching systems such as Brain Targeted Teaching developed by Johns Hopkins Medical University, top medical college in the world. This systems build upon the latest findings in brain research related to learning and memory. Our focus is on teaching you content, skills, and processes so you can become a better life long learner. You will not only gain mastery of concepts but you will also be able to apply them into higher-order processes such as analysis, evaluation, and creation which are often required techniques for solving complex problems in competitive exams. <br>
+<br>
+We will help you adapt new learning techniques popularized by a course and book by Professor Barbara Oakley of Oakland University, USA. In words of Dr. Oakley "Using these approaches, no matter what your skill levels in math and science, you can change your thinking and change your life. If you're already an expert, this peek under the mental hood will give you ideas for turbocharging successful learning, including counterintuitive test-taking tips and insights that will help you make the best use of your time on homework and problem sets. If you're struggling, you'll see a structured treasure trove of practical techniques that walk you through what you need to do to get on track. If you've ever wanted to become better at anything, this book will help serve as your guide."<br>
+<br>
+<i>Excerpt from Oakley, Barbara (2014-07-31). A Mind For Numbers: How to Excel at Math and Science (Even If You Flunked Algebra) (pp. xix-xx). Penguin Group US. Kindle Edition. <br></i>
+<br>
+<b>Features:</b><ul>
+<li>Learn from the world's top scientists and scholars</li>
+<li>Learn anywhere including in the comfort of your home
+<li>Follow lecture videos with closed captions in in Hindi and English</li>
+<li>Stream class videos via Wi-Fi or mobile networks</li>
+<li>Download videos to watch anytime</li>
+<li>Learn to use learning and memory techniques developed by leading American scientists and used by the world's best engineers, scientists, mathematicians, lawyers, and athletes</li>
+</ul>
+<br>
+<b>Courses:</b><ul>
+<li>JEE and IIT Advanced</li>
+<li>CLAT</li>
+<li>CSAT</li>
+<li>SSC</li>
+<li>English for Test Takers</li>
+<li>How to Learn Science and Math</li>
+</ul>
+</span>
+<a id="showLess1" href="javascript:hideText(1)" style="display:none">show less</a>
+</div>
+<br>
+<div class="heading">Bringing World's Best Classroom into your Home</div>
+<div class="content">
+<br>
+In last two decades internet and smartphone technology have made many solutions developed out of modern scientific research cost effective. Given the widespread availability of internet and mobile networks it is now becoming possible to create a viable solution to widely disseminate fruits of discoveries by some of the world's best scientists in the fields of education, neuroscience, and cognitive science.<br>
+<br>
+Information and Communication Technology (ICT) has revolutionized messaging, video streaming, and communication. ICT revolution is a significant departure from industrial revolution in the way that the fruits of ICT revolution are widely shared between the developed and the developing world. India is a significant beneficiary of this revolution due to its democracy, intellectual capital, and huge youth population. Further, India is an important partner of leading world economies on various fronts. It has a special relationship with USA as both countries share many of the same concerns on security, economic growth and are participating in education, technology, and media.<br>
+<br>
+Currently, a few education startups in India are helping deliver classroom to students on devices such as computers, notebooks, and mobile phones. They are connecting teachers and students in ways that benefit both. This is just the beginning, though. Connecting students and teachers is a first step. More work needs to be done in creating content and processes that play to the strength of the online medium. It is important to understand that the online medium is not a substitute of the offline, i.e, classroom medium. Instead, online medium brings unique capabilities that are otherwise not available. Modern devices come with a brain of their own also known as computing units which can track and guide student actions and make decisions on the fly to help her progress in the right direction with her studies.
+<a id="showMore2" href="javascript:showText(2)">show more</a>
+<br>
+<br>
+<span id="moreText2" style="display:none">
+Real power of modern devices and technologies in can be harvested by using them as delivery vehicles of latest findings in the advanced fields of brain sciences--neurosciences and cognitive psychology. Advances in the fields of brain research have provided a vast array of tools for both the student and teacher than can help every student including below average or the best students achieve success at the level of the very best in the world. Students who are already at the top of their game can expect to raise it to a global level. However, this can be achieved only by teams that comprise of scientists who can understand and translate latest learning theories into action items. It also requires top class engineers who are capable of building large scale systems that use artificial intelligence, big data analytics, and cloud computing to solve problems of unprecedented complexity. Initiatives such as Coursera and Edx by leading American Universities such as Harvard, MIT, and Stanford have introduced platforms that show promise in bringing the best scientific discoveries in learning and technology in the hands of students around the world.<br>
+<br>
+India has some of the finest secondary schools in the world. Teachers in many successful schools in India produce students with world class skills for their grade level. However, there is a huge gap between what is taught in the school and what is tested in many important exams. This gap has given rise to a big informal sector that is peculiar in terms of the lack of formal training of its teachers and absence of a professional administration. These centers often called "coaching" are filling a gap between the formal education sector and competitive exams for admission to premier institutions and highly sought after public sector jobs. It is as if there is an year missing from our formal education system which these coaching are trying to fill.<br>
+<br>
+A survey of the websites of some of the top coaching shows a mind boggling array of courses being offered for each individual exams such as IIT JEE, CSAT, CLAT, AIPMT, etc. Furthermore, most of their teachers lack any formal training in the field of education or a real life experience in a relevant profession. World's best schools and universities will never employ a majority of these teachers without further training and experience. However, this shortcoming does not seem to stop the informal education sector from expanding at a break neck pace by employing more and more teachers who do not have any formal training in the field of education or relevant real life experiences that can inform them in the subject they are teaching. New branches are popping up like mushrooms. It is hard to believe that these branches have sufficient supply of professionally trained staff able to handle the requirements of its students. Most of the coaching websites also speak flatteringly about their "teaching methodologies" which are often vague and subjective assertions that can not be assessed with any objective means making their efficacy suspect at best.<br>
+<br>
+Education Technologies (EdTech) are rising as a companion and alternative to these coaching classes. These technologies are creating possibilities that did not exist before. One such development is bringing learning content to students remotely--at distant geographic locations. An important implication of such possibilities is that students will have a bigger choice set when it comes to choosing right education provider for them. They will be no more limited to their local providers. This increase in competition on the supply side is bound to improve quality and bring more innovations in this segment.<br>
+<br>
+EdTech is already making its mark by delivering online courses and teaching methodologies that have been formulated and rigorously tested by experts from leading institutions in USA and India These experts often have a PhD from leading research institutions and have been exposed to the best education systems in the world. Use of ICT in education is about to fill the major shortcomings of our informal education system by bringing the best education practices about the whole process of content creation, delivery, assessment, and feedback from the top schools and universities around the world.<br>
+<br>
+Noticeable developments are the MOOCs  and KhanAcademy - some of well established EdTech based education providers that trace their lineage to the leading institutions of the world such as Harvard University, MIT, and Stanford University. These universities have distinguished themselves by producing a large number of Presidents and Prime Ministers, Nobel Laureates, Field Medal winners, and highly successful entrepreneurs such as Bill Gates-founder of Microsoft, Larry Page and Sergey Brin--founders of Google, and Mark Zuckerberg--founder of Facebook.<br>
+<br>
+Massive Online Open Courses (MOOCs) such as Coursera and edX show the way forward when it comes to delivering the top quality education material created by some of the best Professors from the top ranking universities around the world. MOOCs are mostly college level courses that are taken by millions of students around the world. Technology behind the MOOCs is built by engineers from Harvard, MIT, and Stanford and provides an amazing array of powerful tools for both the teachers and students.<br>
+<br>
+Teaching tools developed by MOOCs are helping teachers craft different style of content suitable to individual concepts. Contrast this with traditional method of sequential teaching that often comprises of delivering all type of contents with a limited set of tools and techniques. Additionally, the availability of data on student interaction with devices is making it possible to devise highly efficient and effective strategies of learning based on an individual student's skill level rather than one size fits all approach of traditional education.  <br>
+<br>
+A parallel but more localized development is using the tools created by MOOCs to deliver similar top class content for competitive exams. Edlynx - an initiative of leading scientists and professionals from top institutions around the world such as University of Pennsylvania, CERN, University of California, IIT, and IISERB - is a leader in the field of competitive exam preparation. Edlynx offers hope in standardizing and formalizing the missing year of education in the life of students that covers the gap between school and college education, and the competitive exams. The promise of such MOOCs is in bringing the best learning practices of neuroscience and cognitive psychology and content created by subject experts into hands of students around the world.<br>
+<br>
+Edx (www.edx.org), Coursera (www.coursera.org), and Edlynx (www.edlynx.org) have the potential to revolutionize the education in 21st century. This is a century of knowledge economy and it is fitting that these innovations are bringing the best education to the remotest corners of the world. The promise of these initiatives is in closing the gap between the developed and developing, and school and college. Edx, Coursera, and Edlynx are to education what Google and Facebook are to search and communication. The power of these modern inventions lies in delivering best possible quality to everyone including people who were not even on the horizon of modern world only a few years back.<br>
+<br>
+EdTech is raising the quality of education in the remote corners of India to the best level in the world. It is now possible for a student in a small town of India to study from the leading educators of top world institutions. This phenomenon is about to go viral with upcoming 4G release in India and a new government initiative - Digital India.
+</span>
+<a id="showLess2" href="javascript:hideText(2)" style="display:none">show less</a>
+</div>
 </section>

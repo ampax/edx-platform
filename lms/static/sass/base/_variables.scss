@@ -470,6 +470,8 @@ $course-image-height: ($baseline*8) !default;
 $course-info-height: ($baseline*10) !default;
 $course-title-height: ($baseline*3.6) !default;
 $homepage-bg-image: none !default;
+$homepage-banner-image: url(../images/edx-theme/light-background.jpg);
+
 $login-banner-image: url('#{$static-path}/images/edx-theme/edx-background-banner-account.png') !default;
 $register-banner-image: url('#{$static-path}/images/edx-theme/edx-background-banner-account.png') !default;
 $passwordreset-banner-image: url('#{$static-path}/images/edx-theme/edx-background-banner-account.png') !default;
