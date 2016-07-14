@@ -58,6 +58,7 @@
         li {
           @include float(left);
           margin-right: ($baseline*0.75);
+          line-height: 1.5em;          
 
           a {
             color: $link-color;
