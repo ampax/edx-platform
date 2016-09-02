@@ -425,12 +425,8 @@ class PDFInvoice(object):
         billing_address_para = Paragraph(self.billing_address_text.replace("\n", "<br/>"), para_style)
 
         footer_data = [
-            ['', footer_para],
-            [(_('Billing Address')), ''],
-            ['', billing_address_para],
-            [(_('Disclaimer')), ''],
-            ['', disclaimer_para]
-        ]
+            [(_('Service Provider Address')), ''],
+            ['', billing_address_para]       ]
 
         footer_style = [
             # Styling for the entire footer table.
